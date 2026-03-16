@@ -41,6 +41,7 @@ no* inserir(no* raiz, int v){
     else{
         raiz -> dir = inserir(raiz -> dir, v);
     }
+    return raiz;
 }
 
 no* buscarMenor(no* raiz){
@@ -64,6 +65,18 @@ no* buscarMaior(no* raiz){
     }
     else{
         return raiz;
+    }
+}
+
+no* buscarValor(no* raiz, int v){
+    if(raiz == NULL || raiz -> valor == v){
+        return raiz;
+    }
+    if(v < raiz -> valor){
+        return buscarValor(raiz -> esq, v);
+    }
+    else{
+        return buscarValor(raiz -> dir, v);
     }
 }
 
