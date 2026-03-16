@@ -10,10 +10,11 @@ typedef struct no{
 extern int total_nos;
 
 no* criarNo(int v);
-no* construir(array[], int inicio, int fim);
+no* construir(int array[], int inicio, int fim);
 no* inserir(no* raiz, int v);
 no* buscarMenor(no* raiz);
 no* buscarMaior(no* raiz);
+no* buscarValor(no* raiz, int v);
 no* remover(no* raiz, int v);
 int tamanho(no* raiz);
 int folhas(no* raiz);
