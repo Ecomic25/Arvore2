@@ -25,6 +25,7 @@ int main()
     
     no* menor = buscarMenor(raiz);
     no* maior = buscarMaior(raiz);
+    no* alvo = buscarAlvo(raiz, 20);
     
     if(menor == NULL){
         printf("\nFunção de buscar menor falhou!");
@@ -37,6 +38,12 @@ int main()
     }
     else{
         printf("\nO maior é %d", maior -> valor);
+    }
+    if(alvo == NULL){
+        printf("\nValor alvo não foi encontrado!");
+    }
+    else{
+        printf("\nNumero alvo: %d", alvo -> valor);
     }
     
     printf("\n----------------------------------------------\n");
