@@ -6,12 +6,12 @@ int main()
 {   
     no* raiz = NULL;
     
-    int array[] = {10, 20, 30, 40, 50, 60, 70, 80, 90}
-    int tamanho = sizeof(array[]) / sizeof(array[0]);
+    int array[] = {10, 20, 30, 40, 50, 60, 70, 80, 90};
+    int tamanho_array = sizeof(array) / sizeof(array[0]);
     
     printf("----CONSTRUINDO ARVORE FODAPLAYS----\n\n");
     
-    raiz = construir(array, 0, tamanho - 1);
+    raiz = construir(array, 0, tamanho_array - 1);
     
     imprimir(raiz, 0);
     
@@ -25,7 +25,7 @@ int main()
     
     no* menor = buscarMenor(raiz);
     no* maior = buscarMaior(raiz);
-    no* alvo = buscarAlvo(raiz, 20);
+    no* alvo = buscarValor(raiz, 20);
     
     if(menor == NULL){
         printf("\nFunção de buscar menor falhou!");
@@ -59,6 +59,6 @@ int main()
     raiz = NULL;
     printf("\nTotal de nos: %d", total_nos);
     
-    printf("----ENCERRANDO ARVORE FODAPLAYS----\n\n");
+    printf("\n\n----ENCERRANDO ARVORE FODAPLAYS----\n\n");
     return 0;
 }
