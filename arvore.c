@@ -33,7 +33,7 @@ no* construir(int array[], int inicio, int fim){
 
 no* inserir(no* raiz, int v){
     if(raiz == NULL){
-        return criarNo(v);
+        criarNo(v);
     }
     else if(v < raiz -> valor){
         raiz -> esq = inserir(raiz -> esq, v);
@@ -48,9 +48,11 @@ no* buscarMenor(no* raiz){
     if(raiz == NULL){
         return NULL;
     }
+    
     if(raiz -> esq != NULL){
         return buscarMenor(raiz -> esq);
     }
+    
     else{
         return raiz;
     }
@@ -60,11 +62,57 @@ no* buscarMaior(no* raiz){
     if(raiz == NULL){
         return NULL;
     }
+    
     if(raiz -> dir != NULL){
         return buscarMaior(raiz -> dir);
     }
+    
     else{
         return raiz;
+    }
+}
+
+no* buscarSucessor(no* raiz, int v){
+    if(raiz == NULL){
+        return NULL;
+    }
+    
+    if(raiz -> valor <= v){
+        return buscarSucessor(raiz -> dir, v);
+    }
+    
+    else{
+        no* temp = buscarSucessor(raiz -> esq, v);
+        
+        if(temp != NULL){
+            return temp;
+        }
+        
+        else{
+            return raiz;
+        }
+    }
+}
+
+no* buscarPredecessor(no* raiz, int v){
+    if(raiz == NULL){
+        return NULL;
+    }
+    
+    if(raiz -> valor >= v){
+        return buscarPredecessor(raiz -> esq, v);
+    }
+    
+    else{
+        no* temp = buscarPredecessor(raiz -> dir, v);
+        
+        if(temp != NULL){
+            return temp;
+        }
+        
+        else{
+            return raiz;
+        }
     }
 }
 
@@ -72,9 +120,11 @@ no* buscarValor(no* raiz, int v){
     if(raiz == NULL || raiz -> valor == v){
         return raiz;
     }
+    
     if(v < raiz -> valor){
         return buscarValor(raiz -> esq, v);
     }
+    
     else{
         return buscarValor(raiz -> dir, v);
     }
@@ -89,11 +139,14 @@ no* remover(no* raiz, int v){
         raiz -> esq = remover(raiz -> esq, v);
         return raiz;
     }
+    
     else if(v > raiz -> valor){
         raiz -> dir = remover(raiz -> dir, v);
         return raiz;
     }
+    
     else{
+        
         if(raiz -> esq == NULL && raiz -> dir == NULL){
             free(raiz);
             total_nos--;
@@ -140,6 +193,7 @@ int folhas(no* raiz){
         return folhas(raiz -> esq) + folhas(raiz -> dir);
     }
 }
+
 void destruir(no* raiz){
     if(raiz != NULL){
         destruir(raiz -> esq);
@@ -149,12 +203,10 @@ void destruir(no* raiz){
     }
 }
 
-void imprimir(no* raiz, int nivel){
+void imprimir(no* raiz, int n){
     if(raiz){
-        imprimir(raiz -> dir, nivel + 1);
-        printf("%*s -> %d\n", nivel * 5, "", raiz -> valor);
-        imprimir(raiz -> esq, nivel + 1);
+        imprimir(raiz -> dir, n + 1);
+        printf("%*s -> %d\n", n * 5, "", raiz -> valor);
+        imprimir(raiz -> esq, n + 1);
     }
 }
-
-
